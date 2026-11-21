@@ -1,0 +1,9 @@
+# Local datasets and evaluation outputs
+oprb_test/
+oprb_results/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
