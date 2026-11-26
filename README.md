@@ -5,13 +5,12 @@ Zero-shot benchmark of 5 lightweight Vision-Language Models (VLMs) and dedicated
 ## Repository Structure
 
 - `report/` — LaTeX source (`main.tex`, `content/*.tex`, `figures/`) and compiled PDF (`report/main.pdf`).
-- `notebooks/` — Kaggle evaluation notebooks for VLM models:
+- `notebooks/` — Evaluation notebooks for all 5 models:
   - `OPRB_Florence2_Test_Evaluation.ipynb` (`microsoft/Florence-2-base`)
   - `OPRB_PaddleOCR_VL_0_9B_Test_Evaluation.ipynb` (`PaddlePaddle/PaddleOCR-VL`)
-- Local evaluation scripts for OCR pipelines:
-  - `run_rapidocr_gpu.py` (RapidOCR / PP-OCRv6)
-  - `run_pytesseract_cpu16.py` (Tesseract v5.5)
-  - `run_easyocr_gpu.py` (EasyOCR 1.7.2)
+  - `OPRB_RapidOCR_Test_Evaluation.ipynb` (RapidOCR / PP-OCRv6)
+  - `OPRB_Tesseract_Test_Evaluation.ipynb` (Tesseract v5.5)
+  - `OPRB_EasyOCR_Test_Evaluation.ipynb` (EasyOCR 1.7.2)
 
 ## Summary Results (3,000 OPRB Test Images)
 

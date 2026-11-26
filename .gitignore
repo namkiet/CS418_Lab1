@@ -18,16 +18,12 @@ report/*.fls
 report/*.fdb_latexmk
 report/*.synctex.gz
 
-# Unused scripts & notebooks (keep only the 5 used in the report)
-run_paddleocr_cpu8.py
-run_rapidocr_cpu.py
-run_tesseract_cpu8.py
+# Local scripts & unused notebooks (keep only the 5 notebooks used in the report)
+run_*.py
 smoke_*.py
-notebooks/OPRB_EasyOCR_Test_Evaluation.ipynb
 notebooks/OPRB_Model_Evaluation_Template.ipynb
 notebooks/OPRB_PaddleOCR_Test_Evaluation.ipynb
 notebooks/OPRB_PaddleOCR_VL_Test_Evaluation.ipynb
 notebooks/OPRB_Qwen2_5_VL_3B_Test_Evaluation.ipynb
 notebooks/OPRB_Qwen3_VL_2B_Test_Evaluation.ipynb
 notebooks/OPRB_SmolVLM2_256M_Test_Evaluation.ipynb
-notebooks/OPRB_Tesseract_Test_Evaluation.ipynb
