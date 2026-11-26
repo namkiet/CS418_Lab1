@@ -1,0 +1,33 @@
+\section{Model Descriptions}
+\label{sec:models}
+
+We evaluate 5 lightweight models using official pretrained weights without test-time adaptation:
+
+\begin{itemize}
+    \item \textbf{Florence-2-base (VLM):} Multimodal foundation model ($\approx$232M parameters) by Microsoft, combining a DaViT vision backbone with transformer encoder-decoder, evaluated in FP16 with \texttt{"<OCR>"} prompt (\texttt{num\_beams=1}, \texttt{max\_new\_tokens=1024}).
+    \item \textbf{PaddleOCR-VL (VLM):} Compact vision-language OCR model ($\approx$0.9B parameters) by PaddlePaddle, evaluated in FP16 with \texttt{"OCR:"} prompt (\texttt{batch\_size=8}, \texttt{max\_new\_tokens=2048}, \texttt{repetition\_penalty=1.15}, \texttt{no\_repeat\_ngram\_size=6}).
+    \item \textbf{RapidOCR / PP-OCRv6 (OCR):} Efficient ONNX OCR pipeline ($\approx$15M parameters, $\approx$17\,MB) pairing a DBNet detector with an SVTR/MobileNet text recognizer in FP32 precision.
+    \item \textbf{Tesseract v5.5 / pytesseract (OCR):} Google's LSTM OCR engine ($\approx$25M parameters, $\approx$15\,MB) running with Page Segmentation Mode 3 (\texttt{--psm 3}) and OCR Engine Mode 3 (\texttt{--oem 3}).
+    \item \textbf{EasyOCR 1.7.2 / PyTorch (OCR):} Two-stage OCR system ($\approx$40M parameters, $\approx$85\,MB) combining CRAFT text detection with a ResNet-LSTM-CTC recognizer (batch size 32).
+\end{itemize}
+
+\paragraph{Inference Protocol \& Hardware Disparity.} All VLM runs employ deterministic decoding (\texttt{do\_sample=False}) with Unicode NFKC normalization, whitespace collapsing, and casefolding. Florence-2-base and PaddleOCR-VL were evaluated on cloud \textbf{Kaggle dual Tesla T4 GPUs} ($2\times 15$\,GB), RapidOCR and EasyOCR ran on a \textbf{local CUDA GPU} (NVIDIA RTX 3050 Laptop GPU, 6\,GB), and Tesseract ran on \textbf{local CPU} (16 threads). Latency metrics reflect these distinct compute backends, whereas character- and word-level accuracy remain directly comparable.
+
+\begin{table}[H]
+    \centering
+    \caption{Summary of evaluated lightweight models.}
+    \label{tab:models}
+    \footnotesize
+    \renewcommand{\arraystretch}{0.85}
+    \begin{tabularx}{\columnwidth}{l c c c >{\raggedright\arraybackslash}X}
+        \toprule
+        \textbf{Model} & \textbf{Type} & \textbf{Params / Size} & \textbf{Precision} & \textbf{Execution Environment} \\
+        \midrule
+        Florence-2-base & VLM & 232M / 460\,MB & FP16 & Kaggle GPU ($2\times$ Tesla T4) \\
+        PaddleOCR-VL & VLM & 0.9B / 1.8\,GB & FP16 & Kaggle GPU ($2\times$ Tesla T4) \\
+        RapidOCR (PP-OCRv6) & OCR & 15M / 17\,MB & FP32 & Local GPU (RTX 3050 CUDA) \\
+        Tesseract v5.5 & OCR & 25M / 15\,MB & INT8/FP32 & Local CPU (16 threads) \\
+        EasyOCR 1.7.2 & OCR & 40M / 85\,MB & FP32 & Local GPU (RTX 3050 CUDA) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

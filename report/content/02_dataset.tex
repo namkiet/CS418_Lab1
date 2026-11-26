@@ -1,0 +1,27 @@
+\section{Dataset Statistics}
+\label{sec:dataset}
+
+We evaluate on the \textbf{OPRB test split}, selecting the \textbf{3,000-page} evaluation subset consisting of:
+\begin{itemize}
+    \item \textbf{Text-region occlusions (\texttt{test/text/img/}):} the first 2,000 pages where occlusions directly overlap textual content.
+    \item \textbf{Non-text-region occlusions (\texttt{test/nontext/img/}):} the first 1,000 pages where occlusions appear outside primary text blocks (e.g., margins or figures).
+\end{itemize}
+
+Ground-truth transcripts are extracted exclusively from the corresponding \texttt{gt/} annotation files (tab-separated DocBank records) by reading the token column in row order. Clean page images (\texttt{img\_gt/}) and occlusion masks (\texttt{annots/}) are never provided to any model. Table~\ref{tab:dataset} summarizes the subset composition and occlusion metadata parsed from image filenames.
+
+\begin{table}[H]
+    \centering
+    \caption{OPRB test evaluation subset statistics (3,000 images).}
+    \label{tab:dataset}
+    \footnotesize
+    \begin{tabularx}{\columnwidth}{lrr>{\raggedright\arraybackslash\hsize=0.98\hsize}X>{\raggedright\arraybackslash\hsize=1.02\hsize}Xc}
+        \toprule
+        \textbf{Subset} & \textbf{Pages} & \textbf{Share} & \textbf{Observed Occlusion Types} & \textbf{Densities} & \textbf{Avg.\ Words} \\
+        \midrule
+        \texttt{text}    & 2,000 & 66.7\% & Black\_Ink (1,000), Sim (1,000) & 0.5\%, 1.0\%, 2.0\%; Natural: Sim & 556.1 \\
+        \texttt{nontext} & 1,000 & 33.3\% & Black\_Ink (537), Sim (423), Dust (40) & 0.5\%, 1.0\%, 2.0\%; Natural: Sim, Dust & 755.3 \\
+        \midrule
+        \textbf{Total}   & \textbf{3,000} & \textbf{100\%} & 3 types: Black\_Ink, Sim, Dust & 0.5\%, 1.0\%, 2.0\% + natural overlays & 622.5 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

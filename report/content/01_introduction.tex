@@ -1,0 +1,6 @@
+\section{Introduction}
+\label{sec:intro}
+
+Optical Character Recognition (OCR) on real-world scanned and photographed documents frequently degrades in the presence of physical or digital occlusions such as ink marks, scribbles, stamps, dust, and correction marks. While lightweight Vision-Language Models (VLMs) and dedicated OCR pipelines offer strong zero-shot text extraction capabilities, their relative robustness to partial text obscuration and their computational efficiency remain important practical trade-offs.
+
+In this assignment, we benchmark 5 pretrained lightweight models---spanning both multimodal VLMs and dedicated OCR models---on the Occluded Pages Restoration Benchmark (OPRB) test set. Following the evaluation protocol, all models are evaluated strictly in a zero-shot setting using their pretrained weights without any training or fine-tuning on OPRB. We compare recognition accuracy, robustness across text-region and non-text-region occlusions, error patterns across occlusion types, and inference latency to identify the most suitable models for occluded document recognition.

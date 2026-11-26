@@ -1,0 +1,6 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We evaluated 5 lightweight VLMs and OCR engines on the 3,000-image OPRB benchmark subset without fine-tuning. RapidOCR (PP-OCRv6) demonstrated the strongest overall accuracy and efficiency, while the specialized VLM PaddleOCR-VL ranked second and substantially outperformed Tesseract, EasyOCR, and Florence-2-base at the cost of higher inference latency. While non-text corruptions trigger spurious insertions in OCR detectors, text masking imposes unavoidable omissions.
+
+\paragraph{Model Recommendation \& Limitations.} For accuracy-critical transcription under occlusion, \textbf{RapidOCR} (PP-OCRv6) provides the strongest balance of CER/WER and token F1 ($0.7678$), while achieving practical sub-second latency ($0.84$\,s/img on a local GPU). Benchmarking against clean-page annotations penalizes models that refrain from guessing obscured tokens, and row-order concatenation can inflate CER/WER on multi-column layouts.

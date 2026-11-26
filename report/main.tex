@@ -1,0 +1,50 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[top=1.0cm,bottom=1.0cm,left=1.4cm,right=1.4cm]{geometry}
+\usepackage[expansion=false]{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\columnsep}{0.6cm}
+\setlist{nosep}
+\setlength{\abovecaptionskip}{3pt}
+\setlength{\belowcaptionskip}{3pt}
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+
+% Helper macro for visible placeholders to fill after running experiments
+\newcommand{\placeholder}[1]{\textcolor{blue!70!black}{\texttt{[#1]}}}
+
+\title{\textbf{Evaluating Lightweight Vision-Language and OCR Models on Occluded Document Images}}
+\author{
+    Trinh Vo Nam Kiet \quad 24125013 \\
+    APCS 24A01 HCMUS \\
+    CS418
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report benchmarks 5 pretrained lightweight models---spanning multimodal Vision-Language Models (Florence-2-base, PaddleOCR-VL) and dedicated OCR pipelines (RapidOCR/PP-OCRv6, Tesseract v5.5, EasyOCR 1.7.2)---on the 3,000-page Occluded Pages Restoration Benchmark (OPRB) test evaluation subset under a strictly zero-shot setting. We evaluate character- and word-level accuracy (CER, WER), order-insensitive token F1, robustness across text-region and non-text-region occlusions as well as occlusion types and densities, and per-page inference latency to analyze the trade-offs between compact generative VLMs and dedicated OCR engines for occluded document recognition.
+\end{abstract}
+
+\input{content/01_introduction}
+\input{content/02_dataset}
+\input{content/03_models}
+\input{content/04_results}
+\input{content/05_conclusion}
+
+\end{document}
